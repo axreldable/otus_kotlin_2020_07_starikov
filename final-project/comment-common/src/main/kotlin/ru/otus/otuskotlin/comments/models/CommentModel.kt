@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.comments
+package ru.otus.otuskotlin.comments.models
 
 data class CommentModel(
     var id: String = "",
@@ -10,5 +10,9 @@ data class CommentModel(
 ) {
     val importantComment: String
         get() = "! - $comment"
-}
 
+
+    companion object {
+        val NONE = CommentModel()
+    }
+}

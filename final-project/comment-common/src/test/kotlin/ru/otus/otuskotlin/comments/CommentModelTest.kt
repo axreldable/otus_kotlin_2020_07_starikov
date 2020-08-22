@@ -1,5 +1,6 @@
 package ru.otus.otuskotlin.comments
 
+import ru.otus.otuskotlin.comments.models.CommentModel
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
