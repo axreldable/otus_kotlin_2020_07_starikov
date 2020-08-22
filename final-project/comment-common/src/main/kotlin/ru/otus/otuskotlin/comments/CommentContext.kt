@@ -6,5 +6,6 @@ data class CommentContext(
         var queryUserId: String = "",
         var requestComment: CommentModel = CommentModel.NONE,
         var responseComment: CommentModel = CommentModel.NONE,
+        var responseComments: List<CommentModel> = mutableListOf(),
         var status: CommentContextStatus = CommentContextStatus.NONE
 )
