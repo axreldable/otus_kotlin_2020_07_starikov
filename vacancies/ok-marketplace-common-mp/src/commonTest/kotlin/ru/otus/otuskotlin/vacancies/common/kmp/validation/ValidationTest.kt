@@ -1,7 +1,7 @@
-package ru.otus.otuskotlin.marketrplace.common.kmp.validation
+package ru.otus.otuskotlin.vacancies.common.kmp.validation
 
-import ru.otus.otuskotlin.marketplace.common.kmp.validation.validators.ValidatorIntInRange
-import ru.otus.otuskotlin.marketplace.common.kmp.validation.validators.ValidatorStringNonEmpty
+import ru.otus.otuskotlin.vacancies.common.kmp.validation.validators.ValidatorIntInRange
+import ru.otus.otuskotlin.vacancies.common.kmp.validation.validators.ValidatorStringNonEmpty
 import runBlockingTest
 import kotlin.test.Test
 import kotlin.test.assertEquals

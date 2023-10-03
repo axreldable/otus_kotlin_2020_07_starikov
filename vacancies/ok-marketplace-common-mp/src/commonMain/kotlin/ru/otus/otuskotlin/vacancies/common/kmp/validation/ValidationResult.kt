@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.marketplace.common.kmp.validation
+package ru.otus.otuskotlin.vacancies.common.kmp.validation
 
 class ValidationResult(val errors: List<IValidationError>) {
     val isSuccess: Boolean

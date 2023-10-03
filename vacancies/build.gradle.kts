@@ -5,7 +5,7 @@ plugins {
     id("org.openapi.generator") apply false
 }
 
-group = "ru.otus.otuskotlin.marketplace"
+group = "ru.otus.otuskotlin.vacancies"
 version = "0.0.1"
 
 repositories {

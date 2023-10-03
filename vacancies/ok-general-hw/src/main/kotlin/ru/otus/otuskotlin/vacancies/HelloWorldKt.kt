@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.marketplace
+package ru.otus.otuskotlin.vacancies
 
 fun main() {
     println("Hello World!")

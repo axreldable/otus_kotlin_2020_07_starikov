@@ -1,10 +1,10 @@
-package ru.otus.otuskotlin.marketrplace.common.kmp.validation
+package ru.otus.otuskotlin.vacancies.common.kmp.validation
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
-import ru.otus.otuskotlin.marketplace.common.kmp.validation.validators.ValidatorIntInRange
-import ru.otus.otuskotlin.marketplace.common.kmp.validation.validators.ValidatorStringNonEmpty
+import ru.otus.otuskotlin.vacancies.common.kmp.validation.validators.ValidatorIntInRange
+import ru.otus.otuskotlin.vacancies.common.kmp.validation.validators.ValidatorStringNonEmpty
 
 
 class ValidationSpec : FunSpec({

@@ -1,8 +1,8 @@
-package ru.otus.otuskotlin.marketplace.common.kmp.validation.validators
+package ru.otus.otuskotlin.vacancies.common.kmp.validation.validators
 
-import ru.otus.otuskotlin.marketplace.common.kmp.validation.IValidator
-import ru.otus.otuskotlin.marketplace.common.kmp.validation.ValidationDefaultError
-import ru.otus.otuskotlin.marketplace.common.kmp.validation.ValidationResult
+import ru.otus.otuskotlin.vacancies.common.kmp.validation.IValidator
+import ru.otus.otuskotlin.vacancies.common.kmp.validation.ValidationDefaultError
+import ru.otus.otuskotlin.vacancies.common.kmp.validation.ValidationResult
 
 class ValidatorStringNonEmpty: IValidator<String?> {
 
