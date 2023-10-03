@@ -1,7 +1,7 @@
 package ru.otus.otuskotlin.marketrplace.common.kmp.validation
 
-import ru.otus.otuskotlin.marketplace.common.kmp.test.ValidatorInRange
-import ru.otus.otuskotlin.marketplace.common.kmp.test.ValidatorStringNonEmpty
+import ru.otus.otuskotlin.marketplace.common.kmp.validation.validators.ValidatorIntInRange
+import ru.otus.otuskotlin.marketplace.common.kmp.validation.validators.ValidatorStringNonEmpty
 import runBlockingTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -20,7 +20,7 @@ internal class ValidationTest {
 
     @Test
     fun infixValidationTest() = runBlockingTest {
-        val validator = ValidatorInRange("age", 2, 5)
+        val validator = ValidatorIntInRange("age", 2, 5)
         val res = validator validate 8
         assertEquals(false, res.isSuccess)
         assertTrue {
