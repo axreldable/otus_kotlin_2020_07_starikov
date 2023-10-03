@@ -10,10 +10,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.6.0")
+    testImplementation(project(mapOf("path" to ":ok-marketplace-common-mp")))
 }
 
-tasks.test {
+tasks.withType<Test>().configureEach {
     useJUnitPlatform()
 }
