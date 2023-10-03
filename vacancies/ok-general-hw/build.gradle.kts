@@ -10,7 +10,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.6.0")
+    val kotestVersion: String by project
+
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
     testImplementation(project(mapOf("path" to ":ok-marketplace-common-mp")))
 }
 
