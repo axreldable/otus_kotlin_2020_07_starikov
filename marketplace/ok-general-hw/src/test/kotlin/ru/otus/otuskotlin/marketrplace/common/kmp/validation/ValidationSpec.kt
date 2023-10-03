@@ -3,8 +3,8 @@ package ru.otus.otuskotlin.marketrplace.common.kmp.validation
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
-import ru.otus.otuskotlin.marketplace.common.kmp.test.ValidatorInRange
-import ru.otus.otuskotlin.marketplace.common.kmp.test.ValidatorStringNonEmpty
+import ru.otus.otuskotlin.marketplace.common.kmp.validation.validators.ValidatorIntInRange
+import ru.otus.otuskotlin.marketplace.common.kmp.validation.validators.ValidatorStringNonEmpty
 
 class ValidationSpec : FunSpec({
 
@@ -16,7 +16,7 @@ class ValidationSpec : FunSpec({
     }
 
     test("validate range") {
-        val validator = ValidatorInRange("age", 2, 5)
+        val validator = ValidatorIntInRange("age", 2, 5)
         val res = validator.validate(8)
         res.isSuccess shouldBe false
         res.errors.first().message shouldContain "range"

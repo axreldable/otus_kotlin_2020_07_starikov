@@ -1,8 +1,6 @@
-package ru.otus.otuskotlin.marketplace.common.kmp.test
+package ru.otus.otuskotlin.marketplace.common.kmp.validation
 
-class ValidationResult(
-    val errors: List<IValidationError>
-) {
+class ValidationResult(val errors: List<IValidationError>) {
     val isSuccess: Boolean
         get() = errors.isEmpty()
 

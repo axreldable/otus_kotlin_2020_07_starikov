@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.vacancies.common.kmp.validation
+package ru.otus.otuskotlin.marketplace.common.kmp.validation
 
 data class ValidationDefaultError(
     override val message: String,
