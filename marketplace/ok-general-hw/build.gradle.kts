@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     testImplementation("io.kotest:kotest-runner-junit5-jvm:4.6.0")
-    testImplementation(project(mapOf("path" to ":ok-marketplace-common-mp")))
+    testImplementation(project(":ok-marketplace-common-mp"))
 }
 
 tasks.withType<Test>().configureEach {

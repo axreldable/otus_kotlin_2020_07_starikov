@@ -5,6 +5,6 @@ interface IVcModel {
     val title: String?
     val description: String?
     val city: String?
-    val experience: String?
+    val experience: VExperience?
     val skillIds: MutableSet<String>?
 }
