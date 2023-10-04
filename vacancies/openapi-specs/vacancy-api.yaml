@@ -1,0 +1,365 @@
+openapi: 3.0.3
+info:
+  title: Vacancy API
+  description: 'Microservice for Vacancies.'
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/v1
+paths:
+  /vacancy/create:
+    post:
+      summary: Create vacancy
+      operationId: vacancyCreate
+      requestBody:
+        description: Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestVacancyCreate'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseVacancyCreate'
+
+  /vacancy/read:
+    post:
+      summary: Vacancy Info
+      operationId: vacancyRead
+      requestBody:
+        description: Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestVacancyRead'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseVacancyRead'
+
+  /vacancy/update:
+    post:
+      summary: Vacancy update
+      operationId: vacancyUpdate
+      requestBody:
+        description: Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestVacancyUpdate'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseVacancyUpdate'
+
+  /vacancy/delete:
+    post:
+      summary: Vacancy delete
+      operationId: vacancydDelete
+      requestBody:
+        description: Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestVacancyDelete'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseVacancyDelete'
+
+  /vacancy/list:
+    post:
+      summary: Get the list of vacancies
+      operationId: vacancyList
+      requestBody:
+        description: Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestVacancyList'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseVacancyLookup'
+
+  /vacancy/search:
+    post:
+      summary: Search of vacancies
+      operationId: vacancySearch
+      requestBody:
+        description: Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestVacancySearch'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseVacancyLookup'
+
+components:
+  schemas:
+
+    RequestVacancyList:
+      title: Request for listing vacancies
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcRequestBase'
+        - type: object
+          properties:
+            vacancyIds:
+              type: array
+              title: Vacancy ids
+              example:
+                - '1232-23423-346467-56756'
+                - '1232-23423-346467-56757'
+                - '1232-23423-346467-56758'
+              items:
+                type: string
+
+    RequestVacancySearch:
+      title: Request for searching vacancies
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcRequestBase'
+        - type: object
+          properties:
+            filterData:
+              $ref: '#/components/schemas/VacancySearchFilter'
+
+    ResponseVacancyLookup:
+      title: Response on vacancy search or list
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcResponseBase'
+        - type: object
+          properties:
+            vacancies:
+              type: array
+              items:
+                $ref: '#/components/schemas/Vacancy'
+
+    VacancySearchFilter:
+      title: Filter for searching vacancies
+      type: object
+      properties:
+        text:
+          type: string
+          title: String representation of the filter
+
+
+    Vacancy:
+      title: Vacancy
+      allOf:
+        - $ref: '#/components/schemas/VacancyUpdate'
+        - type: object
+          title: Vacancy - update
+          description: Base structure for a vacancy
+          properties:
+            permissions:
+              type: array
+              uniqueItems: true
+              items:
+                $ref: '#/components/schemas/VacancyPermission'
+
+    VacancyUpdate:
+      allOf:
+        - $ref: '#/components/schemas/VacancyCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+              title: Identifier
+              example: '12343-34534-67867'
+
+    VacancyCreate:
+      type: object
+      title: Vacancy creation
+      description: Base structure for creating vacancy
+      properties:
+        title:
+          type: string
+          title: Vacancy title
+          example: Java Developer
+        description:
+          type: string
+          title: Vacancy description
+          example: We are looking experienced Java developer with deep knowledge of Spring
+        city:
+          type: string
+          title: Vacancy location
+          example: Moscow
+        experience:
+          type: string
+          title: Vacancy location
+          example: Moscow
+        skillIds:
+          type: array
+          title: Skill identifiers
+          example:
+            - '1232-23423-346467-56756'
+            - '1232-23423-346467-56757'
+            - '1232-23423-346467-56758'
+          items:
+            type: string
+
+    VacancyPermission:
+      type: string
+      enum:
+        - read
+        - update
+        - delete
+
+
+    RequestVacancyRead:
+      title: Request to read a vacancy
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcRequestBase'
+        - type: object
+          properties:
+            read:
+              type: object
+              properties:
+                id:
+                  type: string
+
+    ResponseVacancyRead:
+      title: Response on reading vacancy
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcResponseBase'
+        - type: object
+          properties:
+            demand:
+              $ref: '#/components/schemas/Vacancy'
+
+
+    RequestVacancyUpdate:
+      title: Request on updating vacancy
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcRequestBase'
+        - type: object
+          properties:
+            updateData:
+              $ref: '#/components/schemas/VacancyUpdate'
+
+    ResponseVacancyUpdate:
+      title: Response on updating vacancy
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcResponseBase'
+        - type: object
+          properties:
+            demand:
+              $ref: '#/components/schemas/Vacancy'
+
+    RequestVacancyDelete:
+      title: Request to delete a vacancy
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcRequestBase'
+        - type: object
+          properties:
+            delete:
+              type: object
+              properties:
+                id:
+                  type: string
+
+    ResponseVacancyDelete:
+      title: Response on deleting a vacancy
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcResponseBase'
+        - type: object
+          properties:
+            demand:
+              $ref: '#/components/schemas/Vacancy'
+            deleted:
+              type: boolean
+              title: Vacancy has been deleted - true, false
+
+    RequestVacancyCreate:
+      title: Request to create a vacancy
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcRequestBase'
+        - type: object
+          properties:
+            createData:
+              $ref: '#/components/schemas/VacancyCreate'
+
+    ResponseVacancyCreate:
+      title: Response on creating a vacancy
+      allOf:
+        - $ref: '#/components/schemas/BaseMessage'
+        - $ref: '#/components/schemas/VcResponseBase'
+        - type: object
+          properties:
+            demand:
+              $ref: '#/components/schemas/Vacancy'
+
+
+    BaseMessage:
+      type: object
+      title: Base structure of a message
+      properties:
+        type:
+          type: string
+          title: Тип запроса
+          description: 'Идентификатор типа запроса. Используется в качестве дескриминатора при десериализации.
+            Наиболее востребован при пересылке через Websocket и другие транспорты без явного выделения канала.'
+      discriminator:
+        propertyName: type
+
+    VcRequestBase:
+      type: object
+      properties:
+        requestId:
+          type: string
+          title: Идентификатор запроса
+          description: Уникальный идентификатор запроса для мониторинга прохождения запроса по бэкенд-инфраструктуре
+        onResponse:
+          type: string
+          title: Сформирован на response.id
+          description: Идентификатор ответа, на который сформирован текущий запрос
+
+    VcResponseBase:
+      type: object
+      properties:
+        responseId:
+          type: string
+          title: Идентификатор запроса
+          description: Уникальный идентификатор запроса для мониторинга прохождения запроса по бэкенд-инфраструктуре
+        onRequest:
+          type: string
+          title: Сформирован на request.id
+          description: Идентификатор запроса, на который сформирован текущий ответ

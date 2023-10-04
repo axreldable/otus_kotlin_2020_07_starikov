@@ -23,18 +23,17 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
 
     testImplementation("io.kotlintest:kotlintest-runner-junit5:$kotlinTestRunnerVersion")
-
 }
 
 openApiGenerate {
-    val basePackage = "${project.group}.transport.openapi.demand"
+    val basePackage = "${project.group}.transport.openapi.vacancy"
     packageName.set(basePackage)
     generatorName.set("kotlin")
     configOptions.apply {
         put("library", "jvm-okhttp4")
         put("requestDateConverter", "toString")
     }
-    inputSpec.set("${rootProject.projectDir}/openapi-specs/marketplace-demand-api.yaml")
+    inputSpec.set("${rootProject.projectDir}/openapi-specs/vacancy-api.yaml")
 }
 
 sourceSets.main {
