@@ -10,4 +10,5 @@ version = "0.0.1"
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://repo.spring.io/milestone") }
 }

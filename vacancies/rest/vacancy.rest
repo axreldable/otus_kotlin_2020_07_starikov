@@ -1,0 +1,30 @@
+POST http://{{url}}/vacancy/list
+Content-Type: application/json
+
+{}
+
+###
+POST http://{{url}}/vacancy/create
+Content-Type: application/json
+
+{"createData": {"title": "Test vacancy", "description": "Some Test vacancy"}}
+
+###
+POST http://{{url}}/vacancy/read
+Content-Type: application/json
+
+{"vacancyId": "d-7263"}
+
+###
+POST http://{{url}}/vacancy/update
+Content-Type: application/json
+
+{"updateData": {"id": "d-rrt", "title": "Test vacancy", "description": "Some Test vacancy"}}
+
+###
+POST http://{{url}}/vacancy/delete
+Content-Type: application/json
+
+{"id": "d-rrt"}
+
+###
