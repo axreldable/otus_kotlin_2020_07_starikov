@@ -21,3 +21,12 @@ Transport models
 - create module with transport models using KMP (ok-vc-transport-kt-vacancy-kt);
 - write test for serialization/deserialization DTO classes;
 - implement mappers for DTO and internal models;
+
+
+#### [HW_3 - vacancies](https://github.com/axreldable/otus_kotlin_2020_07_starikov/tree/master/vacancies)
+Framework module
+
+- choose framework (Spring or Ktor)
+- integrate transport models
+- implement stubs for responses
+- implement tests
