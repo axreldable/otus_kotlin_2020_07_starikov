@@ -15,5 +15,5 @@ dependencies {
     testImplementation(kotlin("test-junit"))
 
     implementation(project(":ok-vc-be-common"))
-    implementation(project(":ok-vc-transport-mp-vacancy-mp"))
+    implementation(project(":ok-vc-mp-transport-mp"))
 }

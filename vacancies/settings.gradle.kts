@@ -19,7 +19,7 @@ pluginManagement {
 }
 
 // Multiplatform modules
-include("ok-vc-transport-mp-vacancy-mp")
+include("ok-vc-mp-transport-mp")
 
 // BE (JVM) modules
 include("ok-vc-be-common")
